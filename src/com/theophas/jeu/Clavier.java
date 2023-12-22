@@ -19,6 +19,11 @@ public class Clavier implements KeyListener{
 			Main.scene.mario.setVersDroite(true);
 			Main.scene.setDx(1);
 		}else if(e.getKeyCode() == KeyEvent.VK_LEFT){
+			if(Main.scene.getxPos() == 4431){
+				Main.scene.setxPos(4430);
+				Main.scene.setxFond1(-50);
+				Main.scene.setxFond2(750);
+			}
 			Main.scene.mario.setMarche(true);
 			Main.scene.mario.setVersDroite(false);
 			Main.scene.setDx(-1);

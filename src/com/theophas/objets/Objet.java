@@ -1,10 +1,17 @@
 package com.theophas.objets;
 
+import java.awt.Image;
+
+import javax.swing.ImageIcon;
+
 import com.theophas.jeu.Main;
 
 public class Objet {
     private int largeur, hauteur;
     private int x, y;
+
+    protected Image imgObjet;
+    protected ImageIcon icoObjet;
     
     
     
@@ -13,6 +20,30 @@ public class Objet {
         this.hauteur = hauteur;
         this.x = x;
         this.y = y;
+    }
+
+
+
+    public Image getImgObjet() {
+        return imgObjet;
+    }
+
+
+
+    public void setImgObjet(Image imgObjet) {
+        this.imgObjet = imgObjet;
+    }
+
+
+
+    public ImageIcon getIcoObjet() {
+        return icoObjet;
+    }
+
+
+
+    public void setIcoObjet(ImageIcon icoObjet) {
+        this.icoObjet = icoObjet;
     }
 
 

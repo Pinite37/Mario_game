@@ -85,7 +85,7 @@ public class Personnage {
         ImageIcon ico;
         Image img;
 
-        if (this.marche == false || Main.scene.getxPos() <= 0) {
+        if (this.marche == false || Main.scene.getxPos() <= 0 || Main.scene.getxPos() > 4430) {
             if (this.versDroite == true) {
                 str = "/images/" + nom + "ArretDroite.png";
             } else {
