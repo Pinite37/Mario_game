@@ -99,6 +99,18 @@ public class Scene extends JPanel {
 		return hauteurPlafond;
 	}
 
+	
+
+
+	public void setHauteurPlafond(int hauteurPlafond) {
+		this.hauteurPlafond = hauteurPlafond;
+	}
+
+
+	public void setySol(int ySol) {
+		this.ySol = ySol;
+	}
+
 
 	//**** SETTERS ****//
 	public void setDx(int dx) {
@@ -145,13 +157,20 @@ public class Scene extends JPanel {
 		super.paintComponent(g);
 		Graphics g2 = (Graphics2D)g;
 		
-		if(this.mario.contactAvant(tuyauRouge1) == true){
-			this.mario.setMarche(false);
-			this.dx = 0;
+		
+		if(this.mario.proche(bloc1)){
+			this.mario.contact(bloc1);
 		}
+		
+		if(this.mario.proche(tuyauRouge1)){
+			this.mario.contact(tuyauRouge1);
+		}
+
+
 		this.deplacementFond();
 
 		this.tuyauRouge1.deplacement();
+		this.bloc1.deplacement();
 
 		
 		
@@ -160,7 +179,7 @@ public class Scene extends JPanel {
  		g2.drawImage(imgChateau1, 10 - this.xPos, 95, null);
  		g2.drawImage(imgDepart, 220 - this.xPos, 234, null);
 		g2.drawImage(this.tuyauRouge1.getImgTuyauRouge(), this.tuyauRouge1.getX(), this.tuyauRouge1.getY(), null);
-		g2.drawImage(this.bloc1.getImgBloc(), this.bloc1.getX() - this.xPos, this.bloc1.getY(), null);
+		g2.drawImage(this.bloc1.getImgBloc(), this.bloc1.getX(), this.bloc1.getY(), null);
 		if(this.mario.isSaut()){
 			g2.drawImage(this.mario.saute(), this.mario.getX(), this.mario.getY(), null);
 		}else{

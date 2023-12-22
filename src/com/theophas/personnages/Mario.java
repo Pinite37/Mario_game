@@ -5,6 +5,7 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 import com.theophas.jeu.Main;
+import com.theophas.objets.Objet;
 
 public class Mario extends Personnage{
 
@@ -89,4 +90,26 @@ public class Mario extends Personnage{
         img = ico.getImage();
         return img;
     }
+
+
+    public void contact(Objet objet) {
+		// contact horizontal
+		if((super.contactAvant(objet) == true && this.isVersDroite() == true) || (super.contactArriere(objet) == true && this.isVersDroite() == false)){
+			Main.scene.setDx(0);
+		    this.setMarche(false);
+		}
+		// contact avec un objet en dessous
+        if(super.contactDessous(objet) == true && this.saut == true){ // Mario saute sur un objet
+			Main.scene.setySol(objet.getY());			
+		}else if(super.contactDessous(objet) == false){ // Mario tombe sur le sol initial
+			Main.scene.setySol(293); // altitude du sol initial
+			if(this.saut == false){this.setY(243);} // altitude initiale de Mario
+		}
+        // contact avec un objet au-dessus
+        if(super.contactDessus(objet) == true){
+			Main.scene.setHauteurPlafond(objet.getY() + objet.getHauteur()); // le plafond devient le dessous de l'objet
+		}else if(super.contactDessus(objet) == false && this.saut == false){
+			Main.scene.setHauteurPlafond(0);// altitude du plafond initial (ciel)
+		}     
+	}
 }
