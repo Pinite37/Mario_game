@@ -12,8 +12,8 @@ public class Personnage {
     // **** VARIABLES ****//
     private int largeur, hauteur; // dimensions du personnage
     private int x, y; // position du personnage
-    private boolean marche; // vrai quand le personnage marche
-    private boolean versDroite; // vrai quand le personnage est tourn� vers la droite
+    protected boolean marche; // vrai quand le personnage marche
+    protected boolean versDroite; // vrai quand le personnage est tourn� vers la droite
     public int compteur; // compteur des pas du personnage
 
     // **** CONSTRUCTEUR ****//
@@ -85,7 +85,7 @@ public class Personnage {
         ImageIcon ico;
         Image img;
 
-        if (this.marche == false || Main.scene.getxPos() <= 0 || Main.scene.getxPos() > 4430) {
+        if (this.marche == false) {
             if (this.versDroite == true) {
                 str = "/images/" + nom + "ArretDroite.png";
             } else {
@@ -116,6 +116,11 @@ public class Personnage {
         return img;
     }
 
+    public void deplacement(){
+        if(Main.scene.getxPos() >= 0){
+            this.x = this.x - Main.scene.getDx();
+        }
+    }
     
 
     protected boolean contactAvant(Objet objet){
